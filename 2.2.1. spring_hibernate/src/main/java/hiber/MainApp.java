@@ -31,7 +31,7 @@ public class MainApp {
             System.out.println();
         }
 
-        System.out.println(userService.getUserByModelAndSerial("Bugatti", 777));
+        System.out.println(userService.getUserByModelAndSerial("Bugatti!", 777));
 
         context.close();
     }
