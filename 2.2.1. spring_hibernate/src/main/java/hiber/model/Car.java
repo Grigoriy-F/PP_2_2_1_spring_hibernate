@@ -3,15 +3,21 @@ package hiber.model;
 import javax.persistence.*;
 import java.io.Serializable;
 
+// @Entity — Указывает, что данный бин (класс) является сущностью.
 @Entity
+// @Table — указывает на имя таблицы, которая будет отображаться в этой сущности.
 @Table(name = "car",
         uniqueConstraints = {@UniqueConstraint(columnNames = {"model", "series"})})
 public class Car implements Serializable {
 
-    @Id
-    @OneToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @Id // @Id — id колонки
+    private Long id; // Используем id User в качестве идентификатора для Car
+    @OneToOne // @OneToOne —  указывает на связь между таблицами «один к одному».
+    @MapsId // Связываем идентификатор Car с идентификатором User
+    @JoinColumn(name = "user_id")
     private User user;
+
+    // @Column — указывает на имя колонки, которая отображается в свойство сущности
     @Column(name = "model")
     private String model;
     @Column(name = "series")

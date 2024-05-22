@@ -9,6 +9,7 @@ import javax.persistence.*;
 public class User {
 
     @Id
+    // @GeneratedValue — указывает, что данное свойство будет создаваться согласно указанной стратегии.
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -21,7 +22,9 @@ public class User {
     @Column(name = "email")
     private String email;
 
+    // @OneToOne —  указывает на связь между таблицами «один к одному».
     @OneToOne(mappedBy = "user")
+    // cascade = CascadeType.ALL — означает, что операция, например, записи должна распространяться и на дочерние таблицы.
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     private Car car;
 
